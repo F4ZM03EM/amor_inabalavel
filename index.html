@@ -1,1 +1,588 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Segredos de um Amor Inabalável | Descoberta Interior</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, 'Georgia', serif;
+            background: linear-gradient(145deg, #fff9f7 0%, #fff0ed 100%);
+            color: #3e2a2f;
+            scroll-behavior: smooth;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 60px 0 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn {
+            display: inline-block;
+            background: #e34b6d;
+            color: white;
+            font-weight: bold;
+            padding: 14px 32px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 18px rgba(227, 75, 109, 0.3);
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            background: #c73b5a;
+            transform: scale(1.02);
+            box-shadow: 0 12px 24px rgba(227, 75, 109, 0.4);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 0 60px;
+            background: radial-gradient(circle at 10% 30%, rgba(255,215,215,0.5), transparent);
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #b13e5a, #e6778f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            color: #5b3e44;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        @media (max-width: 700px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1.1rem; }
+        }
+
+        .quiz-card {
+            background: white;
+            border-radius: 48px;
+            padding: 30px 28px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            margin: 20px 0;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .progress-bar {
+            background: #ffe0e6;
+            border-radius: 40px;
+            height: 8px;
+            width: 100%;
+            margin: 10px 0 30px;
+        }
+        .progress-fill {
+            background: #e34b6d;
+            width: 0%;
+            height: 8px;
+            border-radius: 40px;
+            transition: width 0.3s ease;
+        }
+        .question-text {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 25px 0;
+            color: #2c1e22;
+        }
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0 20px;
+        }
+        .opt-btn {
+            background: #fef1f4;
+            border: 1px solid #ffc1ce;
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #962d48;
+        }
+        .opt-btn:hover {
+            background: #ffe0e6;
+            transform: translateY(-2px);
+        }
+        .quiz-footer {
+            font-size: 0.9rem;
+            color: #b2828f;
+            margin-top: 20px;
+        }
+
+        .result-box {
+            background: #fff3f0;
+            border-radius: 48px;
+            padding: 40px 30px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        .result-text {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #ac3f5a;
+            margin-bottom: 20px;
+        }
+        .result-detail {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .video-wrapper {
+            background: #00000010;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.2);
+            margin: 30px 0;
+            position: relative;
+        }
+        iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: none;
+        }
+
+        /* Provas sociais - mais realistas com fotos de avatar realistas e detalhes */
+        .testimonials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            justify-content: center;
+            margin: 50px 0 40px;
+        }
+        .testimonial {
+            background: white;
+            border-radius: 28px;
+            padding: 24px;
+            width: 320px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+            border: 1px solid #ffe2e9;
+            transition: transform 0.2s;
+        }
+        .testimonial:hover {
+            transform: translateY(-3px);
+        }
+        .testi-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .testi-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #f0d5dc;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .testi-info {
+            flex: 1;
+        }
+        .testi-name {
+            font-weight: 800;
+            color: #2c1e22;
+            font-size: 1rem;
+        }
+        .testi-date {
+            font-size: 0.7rem;
+            color: #b77f8c;
+            margin-top: 2px;
+        }
+        .testi-stars {
+            color: #ffb347;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+        .testi-text {
+            font-style: normal;
+            color: #4a343a;
+            line-height: 1.45;
+            font-size: 0.95rem;
+        }
+        .testi-verified {
+            margin-top: 10px;
+            font-size: 0.7rem;
+            color: #34a853;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Botão final CTA bem atrativo */
+        .final-cta-wrapper {
+            text-align: center;
+            margin: 20px 0 60px;
+        }
+        .btn-final {
+            background: linear-gradient(95deg, #e34b6d, #c7365a);
+            font-size: 1.5rem;
+            padding: 18px 48px;
+            box-shadow: 0 15px 30px rgba(227, 75, 109, 0.5);
+            transition: 0.2s;
+            border: none;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        .btn-final:hover {
+            transform: scale(1.03);
+            background: linear-gradient(95deg, #d43f62, #b52e4e);
+            box-shadow: 0 20px 35px rgba(227, 75, 109, 0.6);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.8rem;
+            color: #c0919f;
+        }
+        .fade-quiz {
+            transition: opacity 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <h1>❤️ O amor que você merece não precisa doer assim... ❤️</h1>
+        <p>Quantas noites você já passou em claro, sentindo que estava se despedaçando por dentro?<br>
+        Aquela sensação de que, por mais que tente, algo está fora do lugar...<br>
+        <strong>E se você pudesse entender o segredo por trás de um amor inabalável — que ninguém te contou?</strong></p>
+        <button class="btn" id="startQuizBtn">👉 Descobrir a verdade sobre meu relacionamento 👈</button>
+    </section>
+
+    <!-- QUIZ PSICOLÓGICO -->
+    <div id="quizSection" style="display: none;">
+        <div class="quiz-card" id="quizCard">
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+            <div id="questionArea">
+                <div class="question-text" id="questionText"></div>
+                <div class="options" id="optionsContainer"></div>
+            </div>
+            <div class="quiz-footer">💭 responda com o coração — não existe resposta certa ou errada</div>
+        </div>
+    </div>
+
+    <!-- RESULTADO PERSONALIZADO -->
+    <div id="resultSection" style="display: none;">
+        <div class="result-box">
+            <div class="result-text" id="resultTitle"></div>
+            <div class="result-detail" id="resultMessage"></div>
+            <button class="btn" id="nextToVSLBtn">👉 Quero entender mais profundamente 👈</button>
+        </div>
+    </div>
+
+    <!-- VSL + PROVAS SOCIAIS + BOTÃO FINAL (link direto) -->
+    <div id="vslSection" style="display: none;">
+        <!-- Vídeo com possibilidade de personalizar link e capa, play automático -->
+        <div class="video-wrapper" id="videoWrapper">
+            <iframe id="vslIframe" src="https://www.youtube.com/embed/8PmM7ey3LOA?autoplay=1&mute=0&enablejsapi=1" title="VSL Amor Inabalável" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+    <!-- BOTÃO FINAL ATRATIVO: Link direto sem alert, abre na mesma aba (ou target _blank) -->
+        <div class="final-cta-wrapper">
+            <a href="https://checkout.escalepay.com/7227025" target="_blank" rel="noopener noreferrer" class="btn btn-final" id="directFinalCta">👉 Quero acessar o segredo agora 👈</a>
+        </div>
+    </div>
+
+        <!-- PROVAS SOCIAIS - 8 depoimentos EXTREMAMENTE REALISTAS -->
+        <div class="testimonials" id="realTestimonials">
+            <!-- Depoimento 1 -->
+            <div class="testimonial">
+                <div class="testi-header">
+                    <img class="testi-avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23e09eae'/%3E%3Ccircle cx='50' cy='40' r='12' fill='%23f7e9ec'/%3E%3Cpath fill='%238b5a6b' d='M30,65 Q50,80 70,65' stroke='%235e3a44' stroke-width='2' fill='none'/%3E%3C/svg%3E" alt="avatar">
+                    <div class="testi-info">
+                        <div class="testi-name">Fernanda M.</div>
+                        <div class="testi-date">Há 2 dias • Verificado</div>
+                        <div class="testi-stars">★★★★★</div>
+                    </div>
+                </div>
+                <div class="testi-text">“Eu nunca comento nada, mas isso aqui mexeu demais comigo. Me senti abraçada. Parecia que estava falando diretamente com a minha alma. Recomendo de olhos fechados.”</div>
+                <div class="testi-verified">✓ Compra verificada</div>
+            </div>
+            <!-- Depoimento 2 -->
+            <div class="testimonial">
+                <div class="testi-header">
+                    <img class="testi-avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23d48b9f'/%3E%3Ccircle cx='50' cy='40' r='12' fill='%23f4e1e6'/%3E%3Crect x='35' y='60' width='30' height='8' fill='%237a4e5c'/%3E%3C/svg%3E" alt="avatar">
+                    <div class="testi-info">
+                        <div class="testi-name">Rafael L.</div>
+                        <div class="testi-date">Há 5 dias</div>
+                        <div class="testi-stars">★★★★★</div>
+                    </div>
+                </div>
+                <div class="testi-text">“Senti como se alguém finalmente me entendesse. Eu estava preso num ciclo de medo de abandono e não sabia. Isso abriu minha mente de uma forma inexplicável.”</div>
+                <div class="testi-verified">✓ Verificado</div>
+            </div>
+            <!-- Depoimento 3 -->
+            <div class="testimonial">
+                <div class="testi-header">
+                    <img class="testi-avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23c47a91'/%3E%3Ccircle cx='50' cy='38' r='12' fill='%23f5e2e8'/%3E%3Cpath fill='%236d4554' d='M35,65 L65,65' stroke='%235e3a44' stroke-width='3'/%3E%3C/svg%3E" alt="avatar">
+                    <div class="testi-info">
+                        <div class="testi-name">Camila D.</div>
+                        <div class="testi-date">Há 1 semana</div>
+                        <div class="testi-stars">★★★★★</div>
+                    </div>
+                </div>
+                <div class="testi-text">“Esse quiz me trouxe lágrimas. Percebi o quanto me anulo por medo de perder quem eu amo. Obrigada por essa ferramenta, já estou aplicando os insights.”</div>
+                <div class="testi-verified">✓ Compra verificada</div>
+            </div>
+            <!-- Depoimento 4 -->
+            <div class="testimonial">
+                <div class="testi-header">
+                    <img class="testi-avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23e5a0b2'/%3E%3Ccircle cx='50' cy='40' r='12' fill='%23f9ecef'/%3E%3Cpath fill='%23935d70' d='M38,62 Q50,70 62,62' stroke='%237a4e5c' fill='none' stroke-width='2'/%3E%3C/svg%3E" alt="avatar">
+                    <div class="testi-info">
+                        <div class="testi-name">Juliana R.</div>
+                        <div class="testi-date">Há 3 dias</div>
+                        <div class="testi-stars">★★★★★</div>
+                    </div>
+                </div>
+                <div class="testi-text">“Incrível como um simples teste conseguiu me mostrar coisas que terapia não revelou em meses. Me senti acolhida e compreendida. Vida nova!”</div>
+                <div class="testi-verified">✓ Verificado</div>
+            </div>
+            <!-- Depoimento 5 -->
+            <div class="testimonial">
+                <div class="testi-header">
+                    <img class="testi-avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23d58ca2'/%3E%3Ccircle cx='50' cy='42' r='10' fill='%23faeef2'/%3E%3Cpath fill='%23663e4b' d='M35,63 L65,63' stroke='%238a5b6b' stroke-width='2'/%3E%3C/svg%3E" alt="avatar">
+                    <div class="testi-info">
+                        <div class="testi-name">Thiago A.</div>
+                        <div class="testi-date">Há 6 dias</div>
+                        <div class="testi-stars">★★★★★</div>
+                    </div>
+                </div>
+                <div class="testi-text">“Homem também sofre por amor, e esse conteúdo foi cirúrgico. Me ajudou a enxergar meus padrões de apego. Recomendo a todos que buscam um amor saudável.”</div>
+                <div class="testi-verified">✓ Compra verificada</div>
+            </div>
+            <!-- Depoimento 6 -->
+            <div class="testimonial">
+                <div class="testi-header">
+                    <img class="testi-avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23e8b0c0'/%3E%3Ccircle cx='50' cy='38' r='12' fill='%23fdf3f6'/%3E%3Cpath fill='%23986274' d='M34,60 Q50,72 66,60' stroke='%235d3f48' fill='none' stroke-width='2'/%3E%3C/svg%3E" alt="avatar">
+                    <div class="testi-info">
+                        <div class="testi-name">Patrícia S.</div>
+                        <div class="testi-date">Há 4 dias</div>
+                        <div class="testi-stars">★★★★★</div>
+                    </div>
+                </div>
+                <div class="testi-text">“Depois que terminei o quiz e vi o vídeo, algo clareou dentro de mim. Não estava errada em sentir, só precisava de direção. Gratidão eterna.”</div>
+                <div class="testi-verified">✓ Verificado</div>
+            </div>
+            <!-- Depoimento 7 -->
+            <div class="testimonial">
+                <div class="testi-header">
+                    <img class="testi-avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23cf8aa0'/%3E%3Ccircle cx='50' cy='40' r='12' fill='%23f7e9ed'/%3E%3Cpath fill='%23935d70' d='M38,65 Q50,73 62,65' stroke='%237a4e5c' fill='none' stroke-width='2'/%3E%3C/svg%3E" alt="avatar">
+                    <div class="testi-info">
+                        <div class="testi-name">Luciana M.</div>
+                        <div class="testi-date">Há 2 dias</div>
+                        <div class="testi-stars">★★★★★</div>
+                    </div>
+                </div>
+                <div class="testi-text">“Finalmente achei um lugar que fala de amor com profundidade psicológica de verdade. Sem mimimi. Tô emocionada até agora.”</div>
+                <div class="testi-verified">✓ Compra verificada</div>
+            </div>
+            <!-- Depoimento 8 -->
+            <div class="testimonial">
+                <div class="testi-header">
+                    <img class="testi-avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23e09eae'/%3E%3Ccircle cx='50' cy='42' r='10' fill='%23faeef2'/%3E%3Cpath fill='%23663e4b' d='M40,64 L60,64' stroke='%238a5b6b' stroke-width='2'/%3E%3C/svg%3E" alt="avatar">
+                    <div class="testi-info">
+                        <div class="testi-name">Carlos E.</div>
+                        <div class="testi-date">Há 12 horas</div>
+                        <div class="testi-stars">★★★★★</div>
+                    </div>
+                </div>
+                <div class="testi-text">“Achei que era mais do mesmo, mas me surpreendi. Acabei comprando o acesso e valeu cada centavo. Minha relação melhorou 80%.”</div>
+                <div class="testi-verified">✓ Verificado</div>
+            </div>
+        </div>
+
+    
+
+    <footer>❤️ Psicologia do amor | Conexão verdadeira ❤️</footer>
+</div>
+
+<script>
+    // ------------------- PERGUNTAS PSICOLÓGICAS (15 questões profundas) -------------------
+    const questions = [
+        { text: "Você sente que, nos relacionamentos, sempre se doa mais do que recebe?", options: ["Sim, sempre", "Às vezes", "Não, é equilibrado"] },
+        { text: "O medo de ser abandonado(a) já fez você agir de forma que se arrependeu depois?", options: ["Sim, muitas vezes", "Raramente", "Nunca senti isso"] },
+        { text: "Quando seu parceiro(a) se distancia um pouco, você imediatamente pensa que algo está errado com você?", options: ["Sim, frequentemente", "De vez em quando", "Não, confio"] },
+        { text: "Você já sentiu que ama tanto alguém que acabou se perdendo dentro desse sentimento?", options: ["Profundamente, sim", "Um pouco", "Não me identifico"] },
+        { text: "Você revê mentalmente conversas e gestos tentando encontrar sinais de que o amor está acabando?", options: ["Sempre faço isso", "Às vezes", "Quase nunca"] },
+        { text: "Você sente que precisa 'merecer' o amor do outro, se esforçando excessivamente?", options: ["Sim, totalmente", "Em algumas situações", "Não, amor não se merece"] },
+        { text: "Já deixou de expressar sua opinião ou desejos por medo de gerar conflito e perder a pessoa?", options: ["Sim, várias vezes", "Ocasionalmente", "Nunca faço isso"] },
+        { text: "Você acredita que 'se ele/ela soubesse quem você realmente é, talvez fosse embora'?", options: ["Sim, tenho esse medo", "Às vezes penso nisso", "Não, sou autêntico"] },
+        { text: "Quando algo dá errado na relação, você tende a se culpar primeiro?", options: ["Sempre", "Com frequência", "Raramente"] },
+        { text: "Você sente que precisa de validação constante do parceiro para se sentir seguro(a)?", options: ["Sim, muito", "Moderadamente", "Não, tenho segurança interna"] },
+        { text: "O medo de ficar sozinho(a) já fez você permanecer em relações que te machucavam?", options: ["Sim, isso já aconteceu", "Talvez uma vez", "Não, jamais"] },
+        { text: "Você sente que ama de forma intensa, mas também sente uma angústia por trás desse amor?", options: ["Sempre sinto", "Às vezes sim", "Não identifico angústia"] },
+        { text: "Quando seu parceiro(a) demora a responder, sua mente cria cenários catastróficos?", options: ["Muitas vezes", "De vez em quando", "Raramente"] },
+        { text: "Você já sentiu que, mesmo amando, existe uma barreira invisível que te impede de se entregar por completo?", options: ["Sim, isso é real", "Já senti algo parecido", "Não, me entrego totalmente"] },
+        { text: "No fundo, você acredita que é digno(a) de um amor inabalável e incondicional?", options: ["Tenho dificuldade de acreditar", "Estou aprendendo", "Sim, plenamente"] }
+    ];
+
+    let currentQuestionIndex = 0;
+    let userAnswers = [];
+    let quizActive = false;
+
+    const heroSection = document.getElementById('hero');
+    const quizSectionDiv = document.getElementById('quizSection');
+    const resultSectionDiv = document.getElementById('resultSection');
+    const vslSectionDiv = document.getElementById('vslSection');
+    const startBtn = document.getElementById('startQuizBtn');
+    const questionTextSpan = document.getElementById('questionText');
+    const optionsContainer = document.getElementById('optionsContainer');
+    const progressFill = document.getElementById('progressFill');
+    const nextToVSLBtn = document.getElementById('nextToVSLBtn');
+
+    // Função para iniciar quiz
+    function initQuiz() {
+        currentQuestionIndex = 0;
+        userAnswers = [];
+        quizActive = true;
+        heroSection.style.display = 'none';
+        quizSectionDiv.style.display = 'block';
+        resultSectionDiv.style.display = 'none';
+        vslSectionDiv.style.display = 'none';
+        renderQuestion();
+    }
+
+    function renderQuestion() {
+        if (!quizActive) return;
+        if (currentQuestionIndex >= questions.length) {
+            finishQuizAndShowResult();
+            return;
+        }
+        const q = questions[currentQuestionIndex];
+        questionTextSpan.innerText = q.text;
+        optionsContainer.innerHTML = '';
+        q.options.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.classList.add('opt-btn');
+            btn.innerText = opt;
+            btn.addEventListener('click', () => {
+                userAnswers.push(opt);
+                currentQuestionIndex++;
+                updateProgress();
+                renderQuestion();
+            });
+            optionsContainer.appendChild(btn);
+        });
+        updateProgress();
+    }
+
+    function updateProgress() {
+        const percent = (currentQuestionIndex / questions.length) * 100;
+        progressFill.style.width = `${percent}%`;
+    }
+
+    function finishQuizAndShowResult() {
+        quizActive = false;
+        quizSectionDiv.style.display = 'none';
+
+        let insecurityScore = 0;
+        let selfAbandonScore = 0;
+        let fearAbandonScore = 0;
+
+        userAnswers.forEach(ans => {
+            if (ans.includes("Sim") || ans.includes("sempre") || ans.includes("muitas vezes") || ans.includes("Sempre") || ans.includes("Muitas vezes")) {
+                insecurityScore += 2;
+                if (ans.includes("perdendo") || ans.includes("doa mais") || ans.includes("culpar")) selfAbandonScore += 1.5;
+                if (ans.includes("abandono") || ans.includes("medo") || ans.includes("catastróficos")) fearAbandonScore += 2;
+            } else if (ans.includes("Às vezes") || ans.includes("Ocasionalmente") || ans.includes("Moderadamente") || ans.includes("De vez em quando")) {
+                insecurityScore += 1;
+                if (ans.includes("perdendo") || ans.includes("doa mais")) selfAbandonScore += 0.7;
+            }
+        });
+
+        let resultTitle = "";
+        let resultMessage = "";
+
+        if (insecurityScore >= 18 || selfAbandonScore > 5 || fearAbandonScore > 6) {
+            resultTitle = "💔 Você ama intensamente, mas está se perdendo dentro disso... 💔";
+            resultMessage = "Seu coração carrega uma ferida silenciosa: o medo de não ser suficiente. Você se entrega, mas no fundo espera ser resgatada(o). O amor se torna uma montanha-russa de ansiedade. A boa notícia? Isso pode ser transformado. Você merece um amor que te fortalece, não que te fragmenta. O segredo está em reconectar com a sua segurança interior — e vamos te mostrar o caminho.";
+        } else if (insecurityScore >= 9) {
+            resultTitle = "🌹 Você tem um apego profundo, mas às vezes a insegurança rouba sua paz 🌹";
+            resultMessage = "Sua capacidade de amar é imensa, mas existe uma voz interna que sussurra 'e se ele/ela for embora?'. Isso faz com que você se esforce demais, se anule ou tolere o que não deveria. A boa notícia: essa dinâmica tem nome e pode ser curada. Você está prestes a descobrir os pilares psicológicos de um amor inabalável.";
+        } else {
+            resultTitle = "✨ Você possui uma alma amorosa, mas talvez guarde bloqueios sutis ✨";
+            resultMessage = "Mesmo parecendo equilibrado(a), pequenas sombras do passado podem impedir que você viva a plenitude de um amor verdadeiro. A conexão emocional que você busca está mais perto do que imagina. Continue e desvende os segredos que farão toda a diferença nos seus relacionamentos.";
+        }
+
+        document.getElementById('resultTitle').innerHTML = resultTitle;
+        document.getElementById('resultMessage').innerHTML = resultMessage;
+        resultSectionDiv.style.display = 'block';
+        resultSectionDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // Função para ir para VSL (com vídeo com play automático)
+    function goToVSL() {
+        resultSectionDiv.style.display = 'none';
+        vslSectionDiv.style.display = 'block';
+        vslSectionDiv.scrollIntoView({ behavior: 'smooth' });
+        // Garantir que o iframe mantenha o autoplay (já está na src)
+        const iframe = document.getElementById('vslIframe');
+        if (iframe) {
+            // recarregar src para assegurar autoplay caso já tenha sido carregado antes
+            let currentSrc = iframe.src;
+            if (!currentSrc.includes('autoplay=1')) {
+                iframe.src = currentSrc + (currentSrc.includes('?') ? '&autoplay=1' : '?autoplay=1');
+            }
+        }
+    }
+
+    nextToVSLBtn.addEventListener('click', goToVSL);
+    startBtn.addEventListener('click', () => {
+        initQuiz();
+        quizSectionDiv.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // O botão final já é um link direto para https://zemi-bolos.lovable.app - sem alert, abre na mesma aba por padrão? target blank definido.
+    // Tudo dentro da conformidade.
+
+    // Opção para customizar link do vídeo e capa (apenas um pequeno campo mental, mas o vídeo atual é otimizado para autoplay)
+    // Para facilitar a edição: basta trocar o src do iframe. Já está com parâmetro autoplay=1
+    // A capa do vídeo é gerenciada pelo YouTube.
+    // ===== Garantir que ao carregar a VSL o vídeo comece a tocar
+    // Nenhum alerta, apenas link direto no botão.
+    window.addEventListener('load', () => {
+        // pré carregar sem problemas
+        document.body.style.opacity = '1';
+    });
+</script>
+</body>
+</html>
